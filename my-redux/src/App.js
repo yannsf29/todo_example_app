@@ -1,12 +1,35 @@
 import React from "react";
 import Header from "./Header";
 import ToDoCard from "./components/ToDoCard";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+
+import { TasksList } from './features/tasks/tasksList'
+import { AddTaskForm } from './features/tasks/addTaskForm'
 
 export default function App() {
   return (
     <>
-      <Header />
-
+    <Header />
+      <Router>
+     <div className="App">
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <React.Fragment>
+                <AddTaskForm />
+              </React.Fragment>
+            )} 
+          />
+          <Redirect to="/" />
+        </Switch>
+      </div>
       <div className="w-screen flex items-center justify-center p-4">
         <div className="border-2 w-3/4 flex">
           <div className="w-1/3 m-4 ">
@@ -29,6 +52,8 @@ export default function App() {
           </div>
         </div>
       </div>
+    </Router>
+      
     </>
   );
 }

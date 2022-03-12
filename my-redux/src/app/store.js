@@ -1,13 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import tasksReducer from '../features/tasks/tasksSlice'
 
-export const store = configureStore({
+export default configureStore({
   reducer: {
-    counter: counterReducer,
-  },
-});
-
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-
+    tasks: tasksReducer
+  }
+})
